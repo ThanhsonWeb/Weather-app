@@ -1,12 +1,11 @@
 import logo from "../assets/images/logo.svg";
-import SearchBar from "./UnitsToggle";
+import UnitsToggle from "./UnitsToggle";
 function Header() {
 	return (
-		<div className="flex  justify-between">
+		<header className="flex  justify-between">
 			<img src={logo} alt="logo" />
-			<SearchBar />
-			
-		</div>
+			<UnitsToggle />
+		</header>
 	);
 }
 

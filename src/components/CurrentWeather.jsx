@@ -3,12 +3,12 @@ import sunnyIcon from "../assets/images/icon-sunny.webp";
 import DailyForeCast from "./DailyForeCast";
 function CurrentWeather() {
 	return (
-		<div className="md:w-[60%]">
+		<div className="md:w-[70%]">
 			<div
 				style={{
 					backgroundImage: `url(${bgLarge})`,
 				}}
-				className="bg-cover mt-10  h-[200px] flex items-center justify-around rounded-2xl"
+				className="bg-cover  h-[200px] flex items-center justify-around rounded-2xl"
 			>
 				<div>
 					<h2>Berlin, Germany </h2>
@@ -16,10 +16,10 @@ function CurrentWeather() {
 				</div>
 				<div className="flex items-center">
 					<img src={sunnyIcon} alt="IconSunny" className="h-20 w-20" />
-					<span className="text-5xl font-semibold italic">20°</span>
+					<span className="text-5xl font-semibold italic">20°</span>drizzle
 				</div>
 			</div>
-
+			{/* Weather metrics  : số liệu*/}
 			<div className="flex justify-between items-center mt-6">
 				<div className="py-5 px-7 bg-gray-800 rounded-2xl  ">
 					<h3>Feels like</h3> <br />
