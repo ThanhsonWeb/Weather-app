@@ -1,9 +1,6 @@
 import searchIcon from "../assets/images/icon-search.svg";
 
-function SearchBar() {
-
-	
-
+function SearchBar({ query, setQuery }) {
 	return (
 		<div className="mt-10">
 			<h1 className="md:text-5xl text-3xl  font-semibold text-center">
@@ -17,6 +14,8 @@ function SearchBar() {
 					</label>
 					<input
 						type="text"
+						value={query}
+						onChange={(e) => setQuery(e.target.value)}
 						className="h-10 flex-1 bg-transparent py-2 outline-none"
 						placeholder="Search for a place..."
 					/>

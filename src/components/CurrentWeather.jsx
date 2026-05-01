@@ -2,11 +2,11 @@ import bgLarge from "../assets/images/bg-today-large.svg";
 import sunnyIcon from "../assets/images/icon-sunny.webp";
 import DailyForeCast from "./DailyForeCast";
 
-function CurrentWeather({ data }) {
+function CurrentWeather({ data, location }) {
 	//  Return null or a loader if data hasn't arrived yet
 	if (!data) return <div>Loading...</div>;
-	const { timezone, current_weather, hourly } = data;
-	
+	const {  current_weather, hourly } = data;
+
 	const formattedTime = new Date(current_weather.time).toLocaleString("en-US", {
 		weekday: "long",
 		month: "short",
@@ -21,7 +21,6 @@ function CurrentWeather({ data }) {
 	//Finds the one closest to the current_weather.time
 	let closetIndex = 0;
 	let minDiff = Infinity;
-	//Loops through all hourly timestamps.
 	hourlyTime.forEach((t, i) => {
 		const diff = Math.abs(t - currentTime);
 		if (diff < minDiff) {
@@ -42,7 +41,7 @@ function CurrentWeather({ data }) {
 				className="bg-cover  h-[200px] flex items-center justify-around rounded-2xl"
 			>
 				<div>
-					<h2>{timezone}</h2>
+					<h2>{location.name} {location.country}</h2>
 					<p className="text-sm text-gray-200">{formattedTime}</p>
 				</div>
 				<div className="flex items-center">
