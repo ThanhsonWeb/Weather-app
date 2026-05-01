@@ -1,6 +1,9 @@
 import searchIcon from "../assets/images/icon-search.svg";
 
 function SearchBar() {
+
+	
+
 	return (
 		<div className="mt-10">
 			<h1 className="md:text-5xl text-3xl  font-semibold text-center">
