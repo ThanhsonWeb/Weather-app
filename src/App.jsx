@@ -54,7 +54,7 @@ function App() {
 		<>
 			<Header />
 			<SearchBar query={query} setQuery={setQuery} />
-			<main className="flex gap-8 mt-10">
+			<main className="md:flex gap-8 mt-10 ">
 				<CurrentWeather data={data} location={location} />
 				<HourlyForecast />
 			</main>
