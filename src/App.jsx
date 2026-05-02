@@ -5,17 +5,15 @@ import SearchBar from "./components/SearchBar";
 import { useEffect, useState } from "react";
 function App() {
 	const [data, setData] = useState(null);
-	const [query, setQuery] = useState("Hanoi");
+	const [query, setQuery] = useState("Berlin");
 	const [location, setLocation] = useState(null);
-
-	const URL =
-		"https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true&hourly=relative_humidity_2m,precipitation&timezone=auto";
 
 	// fetch weather data
 	useEffect(() => {
 		if (!location) return;
 		const fetchData = async () => {
 			try {
+				const URL = `https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current_weather=true&hourly=relative_humidity_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto`;
 				const res = await fetch(`${URL}`);
 				const data = await res.json();
 				console.log(data);
@@ -55,7 +53,7 @@ function App() {
 			<Header />
 			<SearchBar query={query} setQuery={setQuery} />
 			<main className="md:flex gap-8 mt-10 ">
-				<CurrentWeather data={data} location={location} />
+				<CurrentWeather data={data} location={location}  />
 				<HourlyForecast />
 			</main>
 		</>
