@@ -1,8 +1,9 @@
 import unit from "../assets/images/icon-units.svg";
 import { Listbox } from "@headlessui/react";
 import dropdown from "../assets/images/icon-dropdown.svg";
+import checkmark from "../assets/images/icon-checkmark.svg";
 
-function UnitsToggle({ setIsCelsius, setIsKm }) {
+function UnitsToggle({ setIsCelsius, setIsKm, isCelsius, isKm }) {
 	return (
 		<div className="flex items-center gap-2 bg-gray-800 px-2 rounded-xl  ">
 			<img src={unit} alt="unit" />
@@ -13,40 +14,64 @@ function UnitsToggle({ setIsCelsius, setIsKm }) {
 						<img src={dropdown} alt="dropdown icon" />
 					</Listbox.Button>
 
-					<Listbox.Options className="absolute mt-2 right-0 bg-gray-800 p-4 rounded-2xl  w-[13rem] ">
+					<Listbox.Options className="absolute mt-2 right-0 bg-gray-800 p-4 rounded-2xl  w-[14rem] ">
 						<h2 className="font-semibold">Switch to Imperial</h2>
 						<div className="mt-2 border-b py-2 ">
 							<span className="">Temperature🌅</span>
 							<Listbox.Option
 								value="celsius"
-								className="option"
+								className={`option ${isCelsius ? "active" : ""}`}
 								onClick={() => setIsCelsius(true)}
 							>
-								Celsius (°C)
+								{isCelsius ? (
+									<>
+										Celsius (°C) <img src={checkmark} alt="checkmark" />
+									</>
+								) : (
+									"Celsius (°C)"
+								)}
 							</Listbox.Option>
 							<Listbox.Option
 								value="Fahrenheit"
-								className="option"
+								className={`option ${isCelsius ? "" : "active"}`}
 								onClick={() => setIsCelsius(false)}
 							>
-								Temperature(°F)
+								{!isCelsius ? (
+									<>
+										Temperature (°F) <img src={checkmark} alt="checkmark" />
+									</>
+								) : (
+									"Temperature (°F)"
+								)}
 							</Listbox.Option>
 						</div>
 						<div className="mt-2 border-b py-2 ">
 							<span className="">Wind 🍃</span>
 							<Listbox.Option
 								value="km"
-								className="option"
+								className={`option ${isKm ? "active" : ""}`}
 								onClick={() => setIsKm(true)}
 							>
-								km/h
+								{isKm ? (
+									<>
+										km/h <img src={checkmark} alt="checkmark" />
+									</>
+								) : (
+									"km/h"
+								)}
 							</Listbox.Option>
 							<Listbox.Option
 								value="mph"
-								className="option"
+								className={`option ${isKm ? "" : "active"}`}
 								onClick={() => setIsKm(false)}
 							>
-								mph
+								{!isKm ? (
+									<>
+										mph <img src={checkmark} alt="checkmark" />
+									</>
+								) : (
+									"mph"
+								)}
 							</Listbox.Option>
 						</div>
 						<div className="mt-2 border-b py-2 ">

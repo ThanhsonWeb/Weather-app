@@ -51,7 +51,12 @@ function App() {
 	// change query -> fetchGeo -> location -> location change -> fetchWeather ?
 	return (
 		<>
-			<Header setIsCelsius={setIsCelsius}  setIsKm={setIsKm}/>
+			<Header
+				setIsCelsius={setIsCelsius}
+				isCelsius={isCelsius}
+				isKm={isKm}
+				setIsKm={setIsKm}
+			/>
 			<SearchBar query={query} setQuery={setQuery} />
 			<main className="md:flex gap-8 mt-10 ">
 				<CurrentWeather
