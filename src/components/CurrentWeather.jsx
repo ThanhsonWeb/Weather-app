@@ -2,7 +2,7 @@ import bgLarge from "../assets/images/bg-today-large.svg";
 import sunnyIcon from "../assets/images/icon-sunny.webp";
 import DailyForeCast from "./DailyForeCast";
 
-function CurrentWeather({ data, location, isCelsius, isKm }) {
+function CurrentWeather({ data, location, isCelsius, isKm, isMil }) {
 	//  Return null or a loader if data hasn't arrived yet
 	if (!data) return <div>Loading...</div>;
 	const { current_weather, hourly } = data;
@@ -84,7 +84,11 @@ function CurrentWeather({ data, location, isCelsius, isKm }) {
 				</div>
 				<div className=" text-xl text-center py-4 bg-gray-800 rounded-2xl  ">
 					<h3>Precipitation</h3> <br />
-					<span>{precipitation} mm</span>
+					<span>
+						{isMil
+							? precipitation + " mm"
+							: Math.round(precipitation / 25.4) + " inch"}
+					</span>
 				</div>
 			</div>
 

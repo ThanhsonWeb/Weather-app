@@ -1,6 +1,6 @@
 import logo from "../assets/images/logo.svg";
 import UnitsToggle from "./UnitsToggle";
-function Header({ setIsCelsius, setIsKm, isCelsius, isKm }) {
+function Header({ setIsCelsius, setIsKm, isCelsius, isKm, setIsMil, isMil }) {
 	return (
 		<header className="flex  justify-between">
 			<img src={logo} alt="logo" />
@@ -9,6 +9,8 @@ function Header({ setIsCelsius, setIsKm, isCelsius, isKm }) {
 				setIsKm={setIsKm}
 				isCelsius={isCelsius}
 				isKm={isKm}
+				setIsMil={setIsMil}
+				isMil={isMil}
 			/>
 		</header>
 	);

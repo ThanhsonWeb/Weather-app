@@ -9,6 +9,7 @@ function App() {
 	const [location, setLocation] = useState(null);
 	const [isCelsius, setIsCelsius] = useState(true);
 	const [isKm, setIsKm] = useState(true);
+	const [isMil, setIsMil] = useState(true);
 	// fetch weather data
 	useEffect(() => {
 		if (!location) return;
@@ -56,6 +57,8 @@ function App() {
 				isCelsius={isCelsius}
 				isKm={isKm}
 				setIsKm={setIsKm}
+				setIsMil={setIsMil}
+				isMil={isMil}
 			/>
 			<SearchBar query={query} setQuery={setQuery} />
 			<main className="md:flex gap-8 mt-10 ">
@@ -64,6 +67,7 @@ function App() {
 					location={location}
 					isCelsius={isCelsius}
 					isKm={isKm}
+					isMil={isMil}
 				/>
 				<HourlyForecast hourly={data?.hourly} />
 			</main>

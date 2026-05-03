@@ -3,13 +3,25 @@ import { Listbox } from "@headlessui/react";
 import dropdown from "../assets/images/icon-dropdown.svg";
 import checkmark from "../assets/images/icon-checkmark.svg";
 
-function UnitsToggle({ setIsCelsius, setIsKm, isCelsius, isKm }) {
+function UnitsToggle({
+	setIsCelsius,
+	setIsKm,
+	isCelsius,
+	isKm,
+	isMil,
+	setIsMil,
+}) {
 	return (
 		<div className="flex items-center gap-2 bg-gray-800 px-2 rounded-xl  ">
 			<img src={unit} alt="unit" />
 			<span>Units</span>
 			<div className="relative">
-				<Listbox>
+				{/* instead onClick on each side -> ListBox manage based on value */}
+				<Listbox
+					value={isCelsius ? "celsius" : "Fahrenheit"}
+					onChange={(val) => setIsCelsius(val === "celsius")}
+					// user click Fahrenheit -> val = "Fahrenheit" -> "Fahrenheit" === "celsius" is false =)) ok ok
+				>
 					<Listbox.Button>
 						<img src={dropdown} alt="dropdown icon" />
 					</Listbox.Button>
@@ -21,7 +33,7 @@ function UnitsToggle({ setIsCelsius, setIsKm, isCelsius, isKm }) {
 							<Listbox.Option
 								value="celsius"
 								className={`option ${isCelsius ? "active" : ""}`}
-								onClick={() => setIsCelsius(true)}
+								// onClick={() => setIsCelsius(true)}
 							>
 								{isCelsius ? (
 									<>
@@ -34,7 +46,7 @@ function UnitsToggle({ setIsCelsius, setIsKm, isCelsius, isKm }) {
 							<Listbox.Option
 								value="Fahrenheit"
 								className={`option ${isCelsius ? "" : "active"}`}
-								onClick={() => setIsCelsius(false)}
+								// onClick={() => setIsCelsius(false)}
 							>
 								{!isCelsius ? (
 									<>
@@ -76,11 +88,32 @@ function UnitsToggle({ setIsCelsius, setIsKm, isCelsius, isKm }) {
 						</div>
 						<div className="mt-2 border-b py-2 ">
 							<span className="">Precipitation </span>
-							<Listbox.Option value="Precipitation" className="option">
-								Millimeters (mm)
+							<Listbox.Option
+								value="Precipitation"
+								className={`option ${isMil ? "active" : ""}`}
+								onClick={() => setIsMil(true)}
+							>
+								{isMil ? (
+									<>
+										Millimeters (mm)
+										<img src={checkmark} alt="checkmark" />
+									</>
+								) : (
+									"Millimeters (mm)"
+								)}
 							</Listbox.Option>
-							<Listbox.Option value="inches" className="option">
-								Inches(in)
+							<Listbox.Option
+								value="inches"
+								className={`option ${isMil ? "" : "active"}`}
+								onClick={() => setIsMil(false)}
+							>
+								{!isMil ? (
+									<>
+										Inches(in) <img src={checkmark} alt="checkmark" />
+									</>
+								) : (
+									"Inches(in)"
+								)}
 							</Listbox.Option>
 						</div>
 					</Listbox.Options>
