@@ -7,3 +7,6 @@ body {
 	/* width: 1170px; */
 }
 
+.option {
+	@apply cursor-pointer  hover:bg-gray-700 py-2 px-4;
+}

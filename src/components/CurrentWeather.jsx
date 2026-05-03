@@ -2,7 +2,7 @@ import bgLarge from "../assets/images/bg-today-large.svg";
 import sunnyIcon from "../assets/images/icon-sunny.webp";
 import DailyForeCast from "./DailyForeCast";
 
-function CurrentWeather({ data, location }) {
+function CurrentWeather({ data, location, isCelsius, isKm }) {
 	//  Return null or a loader if data hasn't arrived yet
 	if (!data) return <div>Loading...</div>;
 	const { current_weather, hourly } = data;
@@ -49,7 +49,11 @@ function CurrentWeather({ data, location }) {
 				<div className="flex items-center">
 					<img src={sunnyIcon} alt="IconSunny" className="h-20 w-20" />
 					<span className="md:text-5xl text-2xl font-semibold italic">
-						{Math.ceil(current_weather.temperature)}°
+						{Math.round(
+							isCelsius
+								? current_weather.temperature
+								: (current_weather.temperature * 9) / 5 + 32,
+						)}
 					</span>
 				</div>
 			</div>
@@ -57,7 +61,14 @@ function CurrentWeather({ data, location }) {
 			<div className="grid lg:grid-cols-4  sm:grid-cols-2 gap-3 mt-6">
 				<div className=" text-xl text-center py-4 bg-gray-800 rounded-2xl  ">
 					<h3>Feels like</h3> <br />
-					<span>{Math.floor(current_weather.temperature)}°</span>
+					<span>
+						{Math.round(
+							isCelsius
+								? current_weather.temperature - 3.2
+								: (current_weather.temperature * 9) / 5 + 32 - 3,
+						)}
+						°
+					</span>
 				</div>
 				<div className=" text-xl text-center py-4 bg-gray-800 rounded-2xl  ">
 					<h3>Humidity</h3> <br />
@@ -65,7 +76,11 @@ function CurrentWeather({ data, location }) {
 				</div>
 				<div className=" text-xl text-center py-4 bg-gray-800 rounded-2xl  ">
 					<h3>Wind</h3> <br />
-					<span>{current_weather.windspeed} km/h</span>
+					<span>
+						{isKm
+							? current_weather.windspeed + " km/h"
+							: current_weather.windspeed * 0.6 + " mph"}
+					</span>
 				</div>
 				<div className=" text-xl text-center py-4 bg-gray-800 rounded-2xl  ">
 					<h3>Precipitation</h3> <br />

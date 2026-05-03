@@ -27,13 +27,9 @@ function HourlyForecast({ hourly }) {
 							{day}
 						</Listbox.Button>
 
-						<Listbox.Options className="absolute mt-2 bg-gray-500 p-4 rounded-2xl  ">
+						<Listbox.Options className="absolute mt-2 bg-gray-700 p-4 rounded-2xl   ">
 							{days.map((d) => (
-								<Listbox.Option
-									key={d}
-									value={d}
-									className="cursor-pointer shadow-md hover:bg-gray-700 py-2 px-4"
-								>
+								<Listbox.Option key={d} value={d} className="option">
 									{d}
 								</Listbox.Option>
 							))}
