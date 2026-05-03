@@ -1,6 +1,8 @@
 import { Listbox } from "@headlessui/react";
 import { useState } from "react";
-function HourlyForecast() {
+function HourlyForecast({ hourly }) {
+	if (!hourly) return null;
+
 	const days = [
 		"Monday",
 		"Tuesday",
@@ -25,12 +27,12 @@ function HourlyForecast() {
 							{day}
 						</Listbox.Button>
 
-						<Listbox.Options className="absolute mt-2 bg-gray-500 p-4 rounded-2xl" >
+						<Listbox.Options className="absolute mt-2 bg-gray-500 p-4 rounded-2xl  ">
 							{days.map((d) => (
 								<Listbox.Option
 									key={d}
 									value={d}
-									className="cursor-pointer hover:bg-gray-700 py-2 px-4"
+									className="cursor-pointer shadow-md hover:bg-gray-700 py-2 px-4"
 								>
 									{d}
 								</Listbox.Option>
@@ -38,9 +40,7 @@ function HourlyForecast() {
 						</Listbox.Options>
 					</Listbox>
 				</div>
-				
 			</div>
-
 		</div>
 	);
 }

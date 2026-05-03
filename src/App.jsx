@@ -13,7 +13,7 @@ function App() {
 		if (!location) return;
 		const fetchData = async () => {
 			try {
-				const URL = `https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current_weather=true&hourly=relative_humidity_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto`;
+				const URL = `https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current_weather=true&hourly=temperature_2m,weathercode,relative_humidity_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto`;
 				const res = await fetch(`${URL}`);
 				const data = await res.json();
 				console.log(data);
@@ -53,8 +53,8 @@ function App() {
 			<Header />
 			<SearchBar query={query} setQuery={setQuery} />
 			<main className="md:flex gap-8 mt-10 ">
-				<CurrentWeather data={data} location={location}  />
-				<HourlyForecast />
+				<CurrentWeather data={data} location={location} />
+				<HourlyForecast hourly={data?.hourly} />
 			</main>
 		</>
 	);

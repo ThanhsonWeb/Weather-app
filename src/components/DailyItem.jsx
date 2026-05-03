@@ -8,24 +8,24 @@ function DailyItem({ date, min, max }) {
 		weekday: "short", // "Mon", "Tue", etc.
 	});
 
+	function getIconForTemp(temp) {
+		if (temp >= 25) return { src: sun, alt: "Sunny" };
+		if (temp >= 15) return { src: cloud, alt: "Cloud" };
+		if (temp >= 5) return { src: drizzle, alt: "Drizzle" };
+		return { src: snow, alt: "snow" };
+	}
+
 	// pick icon based on max temperature
 	const icon = getIconForTemp(max);
-
-	function getIconForTemp(temp) {
-		if (temp >= 25) return sun;
-		if (temp >= 15) return cloud;
-		if (temp >= 5) return drizzle;
-		return snow;
-	}
 
 	return (
 		<div>
 			<div className="p-2 bg-gray-800  h-[8rem] rounded-2xl  flex flex-col items-center  space-y-3 ">
 				<h3>{formattedDate}</h3>
-				<img src={icon} alt="weather icon" className="h-10 w-10" />
-				<div className="flex items-center justify-between w-full ">
-					<span>{Math.floor(min)}°</span>
-					<span>{Math.ceil(max)}°</span>
+				<img src={icon.src} alt={icon.alt} className="h-10 w-10" />
+				<div className="flex items-center justify-between w-full  ">
+					<span>{Math.round(min)}°</span>
+					<span>{Math.round(max)}°</span>
 				</div>
 			</div>
 		</div>

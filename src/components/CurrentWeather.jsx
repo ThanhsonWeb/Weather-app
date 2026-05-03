@@ -5,7 +5,7 @@ import DailyForeCast from "./DailyForeCast";
 function CurrentWeather({ data, location }) {
 	//  Return null or a loader if data hasn't arrived yet
 	if (!data) return <div>Loading...</div>;
-	const { current_weather, hourly, daily } = data;
+	const { current_weather, hourly } = data;
 
 	const formattedTime = new Date(current_weather.time).toLocaleString("en-US", {
 		weekday: "long",
