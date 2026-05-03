@@ -53,7 +53,7 @@ function CurrentWeather({ data, location, isCelsius, isKm, isMil }) {
 							isCelsius
 								? current_weather.temperature
 								: (current_weather.temperature * 9) / 5 + 32,
-						)}
+						)}°
 					</span>
 				</div>
 			</div>
@@ -79,7 +79,7 @@ function CurrentWeather({ data, location, isCelsius, isKm, isMil }) {
 					<span>
 						{isKm
 							? current_weather.windspeed + " km/h"
-							: current_weather.windspeed * 0.6 + " mph"}
+							: Math.round(current_weather.windspeed * 0.6) + " mph"}
 					</span>
 				</div>
 				<div className=" text-xl text-center py-4 bg-gray-800 rounded-2xl  ">

@@ -61,7 +61,7 @@ function App() {
 				isMil={isMil}
 			/>
 			<SearchBar query={query} setQuery={setQuery} />
-			<main className="md:flex gap-8 mt-10 ">
+			<main className="md:flex gap-8 mt-10 p-5 ">
 				<CurrentWeather
 					data={data}
 					location={location}
